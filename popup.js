@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ltuid_v2 = ltuidCookie.value;
                 ltoken_v2 = ltokenCookie.value;
                 debugLog(`ltuid_v2: ${ltuid_v2}, ltoken_v2: ${ltoken_v2}`);  // Debug tokens
-                loadUserData(ltoken_v2, ltuid_v2);  // Load user data with the tokens
+                loadUserData(ltuid_v2);  // Load user data with the tokens
             } else {
                 debugLog("Token and UID not detected. Please sign in to proceed.");
             }
@@ -61,10 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Function to load user data using the tokens from cookies
-    async function loadUserData(ltoken_v2, ltuid_v2) {
+    async function loadUserData(ltuid_v2) {
         try {
             debugLog("Fetching user data from the API...");  // Debug message
-            const response = await fetch(`https://script.google.com/macros/s/AKfycbwGBOE6WS6GWyDu2hfR4xQXHJTtlEFGxGTcK8RFV5CIUFnkJ1MK76EtCIcEkchr9392/exec?token=${ltoken_v2}`);
+            const response = await fetch(`https://script.google.com/macros/s/AKfycbwGBOE6WS6GWyDu2hfR4xQXHJTtlEFGxGTcK8RFV5CIUFnkJ1MK76EtCIcEkchr9392/exec?uid=${ltuid_v2}`);
             const data = await response.json();
             debugLog("User data received from the API");  // Debug message
             debugLog(JSON.stringify(data));  // Debug response data
