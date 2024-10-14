@@ -14,25 +14,26 @@
       background: linear-gradient(135deg, #f2f8ff, #e6efff);
       color: #333;
       padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
+      width: 400px; /* Set a fixed width */
+      box-sizing: border-box; /* Include padding in the width */
       margin: auto;
+      border-radius: 10px;
       box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     }
-
+  
     h3 {
       color: #34699a;
       text-align: center;
       font-weight: 600;
     }
-
+  
     label {
       display: block;
       margin-bottom: 5px;
       font-weight: 600;
       color: #34699a;
     }
-
+  
     input[type="text"], input[type="checkbox"], button {
       width: 100%;
       padding: 10px;
@@ -42,12 +43,12 @@
       box-sizing: border-box;
       font-size: 14px;
     }
-
+  
     input[type="text"] {
       background-color: #f9f9f9;
       color: #333;
     }
-
+  
     button {
       background-color: #34699a;
       color: white;
@@ -55,17 +56,17 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-
+  
     button:hover {
       background-color: #2b5981;
     }
-
+  
     input[type="checkbox"] {
       width: auto;
       margin-right: 10px;
       vertical-align: middle;
     }
-
+  
     a.discord-link {
       display: block;
       text-align: center;
@@ -77,27 +78,28 @@
       font-weight: bold;
       margin-bottom: 15px;
     }
-
+  
     a.discord-link:hover {
       background-color: #5b6eae;
     }
-
+  
     #debug {
       margin-top: 20px;
       color: red;
       font-size: 12px;
     }
-
+  
     #redirectButton {
       background-color: #f44336;
       display: none;
       color: white;
     }
-
+  
     #redirectButton:hover {
       background-color: #d32f2f;
     }
   </style>
+  
 </head>
 <body>
 
@@ -128,19 +130,24 @@
     <label for="zenless_zone_zero">Zenless Zone Zero</label>
     <input type="checkbox" id="zenless_zone_zero"> Zenless Zone Zero
 
+    <label for="giftcode">Auto claim new public giftcode</label>
+    <input type="checkbox" id="giftcode"> Beta giftcode claim
+
+    <!-- Discord name -->
+    <label for="discordName">Discord Name:</label>
+    <input type="text" id="discordName" disabled>
+
     <!-- Notifications Option -->
-    <label for="notification">Enable Notifications</label>
-    <input type="checkbox" id="notification"> Enable Notifications
+    <label for="notification">Discord Notifications</label>
+    <input type="checkbox" id="notification" disabled>
+    <span id="notificationText">(Sign-In with Discord to enable notification)</span>
+
 
     <!-- Discord Sign-In Button -->
     <button id="discordSignIn">Sign in with Discord</button>
 
     <!-- Discord Channel Link -->
-    <a href="https://discord.gg/W8GF6XYzTC" class="discord-link" target="_blank">Join Discord Channel for Logs & Notifications</a>
-
-    <!-- Discord name -->
-    <label for="discordName">Discord Name:</label>
-    <input type="text" id="discordName" disabled>
+    <a href="https://discord.gg/W8GF6XYzTC" class="discord-link" target="_blank">Join Discord Channel for Logs & Notifications</a>    
 
     <!-- Submit Button -->
     <button id="submit">Submit</button>

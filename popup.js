@@ -1,16 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     const accountNameInput = document.getElementById('accountName');
     const uidInput = document.getElementById('uid');
+
     const genshinInput = document.getElementById('genshin');
     const honkaiStarRailInput = document.getElementById('honkai_star_rail');
     const honkai3Input = document.getElementById('honkai_3');
     const tearsOfThemisInput = document.getElementById('tears_of_themis');
     const zenlessZoneZeroInput = document.getElementById('zenless_zone_zero');
+
+    const giftcodeInput = document.getElementById('giftcode');
+
     const notificationInput = document.getElementById('notification');
+    const notificationText = document.getElementById('notificationText');
     const submitButton = document.getElementById('submit');
     const discordSignInButton = document.getElementById('discordSignIn');
     const discordNameInput = document.getElementById('discordName');
+
     const debugDisplay = document.getElementById('debug');
+
     const redirectButton = document.getElementById('redirectButton');
     const targetURL = "https://www.hoyolab.com/";
 
@@ -72,13 +79,25 @@ document.addEventListener('DOMContentLoaded', () => {
             // Populate the fields with user data
             accountNameInput.value = data.accountName || ltuid_v2;  // Default to UID if no account name
             uidInput.value = ltuid_v2;
+
             genshinInput.checked = data.genshin;
             honkaiStarRailInput.checked = data.honkai_star_rail;
             honkai3Input.checked = data.honkai_3;
             tearsOfThemisInput.checked = data.tears_of_themis;
             zenlessZoneZeroInput.checked = data.zenless_zone_zero;
+
+            giftcodeInput.checked = data.giftcode;
+
             notificationInput.checked = data.notification;
-            discordUserID = data.discordName
+            discordUserID = data.discordName;
+            discordNameInput.value = data.accountName
+
+            // Enable notificationInput
+            if (discordNameInput.value != '') {
+                notificationInput.disabled = false;
+                notificationText.textContent = 'Discord notification'
+            }
+
 
         } catch (error) {
             debugLog('Error fetching user data: ' + error);  // Debug error
@@ -98,16 +117,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Submit the form data
     submitButton.addEventListener('click', async function () {
+        const manifest = chrome.runtime.getManifest();
+        const version = manifest.version;
+
         const genshin = genshinInput.checked;
         const honkaiStarRail = honkaiStarRailInput.checked;
         const honkai3 = honkai3Input.checked;
         const tearsOfThemis = tearsOfThemisInput.checked;
         const zenlessZoneZero = zenlessZoneZeroInput.checked;
+
+        const giftcode = giftcodeInput.checked;
+
         const notification = notificationInput.checked;
         const accountName = accountNameInput.value;
-        const discordName = discordUserID
+        const discordName = discordUserID;
+
 
         const requestData = {
+            version,
             token: ltoken_v2,
             uid: ltuid_v2,
             genshin,
@@ -115,9 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
             honkai_3: honkai3,
             tears_of_themis: tearsOfThemis,
             zenless_zone_zero: zenlessZoneZero,
+            giftcode,
             notification,
             accountName,
-            discordName
+            discordName,
         };
 
         debugLog('Submitting form data: ' + JSON.stringify(requestData));  // Debug form data
@@ -164,6 +192,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 accountNameInput.value = data.username;
                 discordNameInput.value = data.username;
+
+                notificationInput.disabled = false
+                notificationText.textContent = 'Discord notification'
+
                 debugLog('Discord user: ' + discordNameInput.value);
             })
             .catch(error => {
