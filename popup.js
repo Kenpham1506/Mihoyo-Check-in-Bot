@@ -1,4 +1,3 @@
-// Add this at the top of the file
 const languages = {
     en: {
         appName: "Mihoyo Check-in Bot",
