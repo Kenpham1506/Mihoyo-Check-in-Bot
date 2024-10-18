@@ -34,7 +34,7 @@
       color: #34699a;
     }
   
-    input[type="text"], input[type="checkbox"], button {
+    input[type="text"], input[type="checkbox"], button, select {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -50,15 +50,48 @@
     }
   
     button {
-      background-color: #34699a;
-      color: white;
       border: none;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      padding: 10px;
+      font-weight: bold;
     }
-  
-    button:hover {
-      background-color: #2b5981;
+
+    #submit {
+      background-color: #4caf50; /* Green for Submit */
+      color: white;
+    }
+    
+    #submit:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+
+    #discordSignIn {
+      background-color: #7289da; /* Discord color */
+      color: white;
+    }
+    
+    #discordSignIn:hover {
+      background-color: #5b6eae; /* Darker Discord color on hover */
+    }
+
+    #toggleDebug {
+      background-color: #ff9800; /* Orange for Developer Mode */
+      color: white;
+    }
+    
+    #toggleDebug:hover {
+      background-color: #fb8c00; /* Darker orange on hover */
+    }
+    
+    #redirectButton {
+      background-color: #f44336; /* Red for Redirect */
+      color: white;
+      display: none; /* Hidden by default */
+    }
+    
+    #redirectButton:hover {
+      background-color: #d32f2f; /* Darker red on hover */
     }
   
     input[type="checkbox"] {
@@ -83,20 +116,34 @@
       background-color: #5b6eae;
     }
   
+    .notification {
+      display: none;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .loading {
+      background-color: #ffcc00;
+      color: #333;
+    }
+
+    .success {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .error {
+      background-color: #f44336;
+      color: white;
+    }
+
     #debug {
       margin-top: 20px;
       color: red;
       font-size: 12px;
-    }
-  
-    #redirectButton {
-      background-color: #f44336;
-      display: none;
-      color: white;
-    }
-  
-    #redirectButton:hover {
-      background-color: #d32f2f;
+      display: none; /* Hidden by default */
     }
   </style>
   
@@ -104,6 +151,14 @@
 <body>
 
   <h3>Mihoyo Check-in Bot</h3>
+
+  <!-- Language Selection -->
+  <div id="language-selection" style="text-align: center; margin-bottom: 15px;">
+    <img src="images/flags/English.png" alt="English" class="language-flag" data-language="en" style="cursor: pointer; width: 40px; margin: 0 5px;">
+    <img src="images/flags/Japan.png" alt="Japanese" class="language-flag" data-language="jp" style="cursor: pointer; width: 40px; margin: 0 5px;">
+    <img src="images/flags/Taiwan.png" alt="Taiwanese" class="language-flag" data-language="tw" style="cursor: pointer; width: 40px; margin: 0 5px;">
+    <img src="images/flags/Vietnam.png" alt="Vietnamese" class="language-flag" data-language="vi" style="cursor: pointer; width: 40px; margin: 0 5px;">
+  </div>
 
   <div id="userSpace">
     <!-- User name -->
@@ -131,7 +186,9 @@
     <input type="checkbox" id="zenless_zone_zero"> Zenless Zone Zero
 
     <label for="giftcode">Auto claim new public giftcode</label>
-    <input type="checkbox" id="giftcode"> Beta giftcode claim
+    <input type="checkbox" id="giftcode"> Beta
+
+    <hr>
 
     <!-- Discord name -->
     <label for="discordName">Discord Name:</label>
@@ -142,21 +199,34 @@
     <input type="checkbox" id="notification" disabled>
     <span id="notificationText">(Sign-In with Discord to enable notification)</span>
 
-
     <!-- Discord Sign-In Button -->
     <button id="discordSignIn">Sign in with Discord</button>
 
     <!-- Discord Channel Link -->
-    <a href="https://discord.gg/W8GF6XYzTC" class="discord-link" target="_blank">Join Discord Channel for Logs & Notifications</a>    
+    <a href="https://discord.gg/W8GF6XYzTC" class="discord-link" target="_blank" id="discordInvite">Join Discord Channel for Logs & Notifications</a>    
+    
+    <hr>
+
+    <!-- Loading and Notification Messages -->
+    <div id="loadingMessage" class="notification loading" style="display: none;">Loading...</div>
+    <div id="successMessage" class="notification success" style="display: none;">Submission Successful!</div>
+    <div id="errorMessage" class="notification error" style="display: none;">Submission Failed. Please try again.</div>
+    <div id="errorMessage_login" class="notification error" style="display: none;">Please login to continue</div>
 
     <!-- Submit Button -->
     <button id="submit">Submit</button>
+
+    <hr>
+
+    <!-- Toggle Developer Mode Button -->
+    <button id="toggleDebug">Show Developer Mode</button>
   </div>
 
   <!-- Debug message display -->
   <div id="debug"></div>
 
   <!-- Redirect Button -->
+  <div id="errorMessage_redirect" class="notification error" style="display: none;">You are not on https://www.hoyolab.com/. Please visit the correct site.</div>
   <button id="redirectButton">Go to Hoyolab</button>
 
   <script src="popup.js"></script>

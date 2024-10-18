@@ -1,3 +1,190 @@
+// Add this at the top of the file
+const languages = {
+    en: {
+        appName: "Mihoyo Check-in Bot",
+
+        accountName: "Account Name:",
+        uid: "UID:",
+
+        genshin: "Genshin Impact",
+        honkaiStarRail: "Honkai Star Rail",
+        honkai3: "Honkai 3",
+        tearsOfThemis: "Tears of Themis",
+        zenlessZoneZero: "Zenless Zone Zero",
+
+        giftcode: "Auto claim new public giftcode",
+
+        discordName: "Discord Name:",
+        discordNotifications: "Discord Notifications",
+        notificationText: "(Sign-In with Discord to enable notification)",
+        signInWithDiscord: "Sign in with Discord",
+        discordInvite: "Join Discord Channel for Logs and Notifications",
+
+        loadingMessage: "Loading...",
+        successMessage: "Submission Successful!",
+        errorMessage: "Submission Failed. Try again or contact support on discord.",
+        errorMessage_login: "Please login to continue",
+
+        submit: "Submit",
+
+        toggleDebug: "Enable developer mode",
+        untoggleDebug: "Disable developer mode",
+
+        redirectButton: "Go to Hoyolab",
+        errorMessage_redirect: "You are not on https://www.hoyolab.com/. Please visit the correct site.",
+    },
+    jp: {
+        appName: "ミホヨ チェックイン ボット",
+
+        accountName: "アカウント名:",
+        uid: "UID:",
+
+        genshin: "原神",
+        honkaiStarRail: "崩壊：星穹鉄道",
+        honkai3: "崩壊3rd",
+        tearsOfThemis: "テイアーズ・オブ・テミス",
+        zenlessZoneZero: "ゼンレスゾーンゼロ",
+
+        giftcode: "新しい公共ギフトコードを自動的に請求",
+
+        discordName: "ディスコード名:",
+        discordNotifications: "ディスコード通知",
+        notificationText: "(通知を有効にするには Discord でサインインしてください)",
+        signInWithDiscord: "Discordでサインイン",
+        discordInvite: "Discord チャンネルに参加してログと通知を取得する",
+
+        loadingMessage: "読み込み中...",
+        successMessage: "送信に成功しました!",
+        errorMessage: "送信に失敗しました。もう一度試すか、Discord のサポートにお問い合わせください。",
+        errorMessage_login: "続行するにはログインしてください",
+
+        submit: "送信",
+
+        toggleDebug: "開発者モードを有効にする",
+        untoggleDebug: "開発者モードを無効にする",
+
+        redirectButton: "ホヨラボに行く",
+        errorMessage_redirect: "https://www.hoyolab.com/ にアクセスしていません。正しいサイトにアクセスしてください。",
+    },
+    tw: {
+        appName: "米哈遊簽到機器人",
+
+        accountName: "帳號名稱:",
+        uid: "UID:",
+
+        genshin: "原神",
+        honkaiStarRail: "崩壞：星穹鐵道",
+        honkai3: "崩壞3rd",
+        tearsOfThemis: "命運之眼",
+        zenlessZoneZero: "無盡之地",
+
+        giftcode: "自動領取最新的公開禮品碼",
+
+        discordName: "Discord 名稱:",
+        discordNotifications: "Discord 通知",
+        notificationText: "（使用 Discord 登入以啟用通知）",
+        signInWithDiscord: "使用 Discord 登入",
+        discordInvite: "有關日誌和通知，請參加 Discord 頻道",
+
+        loadingMessage: "載入中...",
+        successMessage: "提交成功！",
+        errorMessage: "提交失敗。請重試或聯絡支援人員以解決不和諧問題。",
+        errorMessage_login: "請登入以繼續",
+
+        submit: "提交",
+
+        toggleDebug: "啟用開發者模式",
+        untoggleDebug: "禁用開發者模式",
+
+        redirectButton: "前往 Hoyolab",
+        errorMessage_redirect: "您不在 https://www.hoyolab.com/ 上。請造訪正確的網站。",
+    },
+    vi: {
+        appName: "Bot Check-in Mihoyo",
+
+        accountName: "Tên tài khoản:",
+        uid: "UID:",
+
+        genshin: "Genshin Impact",
+        honkaiStarRail: "Honkai Star Rail",
+        honkai3: "Honkai 3",
+        tearsOfThemis: "Tears of Themis",
+        zenlessZoneZero: "Zenless Zone Zero",
+
+        giftcode: "Tự động nhận Giftcode công khai",
+
+        discordName: "Tên Discord:",
+        discordNotifications: "Thông báo Discord",
+        notificationText: "(Đăng nhập bằng Discord để bật thông báo)",
+        signInWithDiscord: "Đăng nhập với Discord",
+        discordInvite: "Tham gia kênh Discord để nhận nhật ký và thông báo",
+
+        loadingMessage: "Đang tải...",
+        successMessage: "Gửi thành công!",
+        errorMessage: "Gửi không thành công. Hãy thử lại hoặc liên hệ với bộ phận hỗ trợ trên discord.",
+        errorMessage_login: "Vui lòng đăng nhập để tiếp tục",
+
+        submit: "Gửi",
+
+        toggleDebug: "Bật chế độ nhà phát triển",
+        untoggleDebug: "Tắt chế độ nhà phát triển",
+
+        redirectButton: "Đi tới Hoyolab",
+        errorMessage_redirect: "Bạn không ở trang https://www.hoyolab.com/. Vui lòng truy cập đúng trang web.",
+    }
+};
+
+// Function to set the language
+function setLanguage(language) {
+    document.querySelector('h3').textContent = languages[language].appName;
+
+    document.querySelector('label[for="accountName"]').textContent = languages[language].accountName;
+    document.querySelector('label[for="uid"]').textContent = languages[language].uid;
+
+    document.querySelector('label[for="genshin"]').textContent = languages[language].genshin;
+    document.querySelector('label[for="honkai_star_rail"]').textContent = languages[language].honkaiStarRail;
+    document.querySelector('label[for="honkai_3"]').textContent = languages[language].honkai3;
+    document.querySelector('label[for="tears_of_themis"]').textContent = languages[language].tearsOfThemis;
+    document.querySelector('label[for="zenless_zone_zero"]').textContent = languages[language].zenlessZoneZero;
+
+    document.querySelector('label[for="giftcode"]').textContent = languages[language].giftcode;
+
+    document.querySelector('label[for="discordName"]').textContent = languages[language].discordName;
+    document.querySelector('label[for="notification"]').textContent = languages[language].discordNotifications;
+    document.querySelector('#notificationText').textContent = languages[language].notificationText;
+    document.querySelector('#discordSignIn').textContent = languages[language].signInWithDiscord;
+    document.querySelector('#discordInvite').textContent = languages[language].discordInvite;
+
+    document.querySelector('#loadingMessage').textContent = languages[language].loadingMessage;
+    document.querySelector('#successMessage').textContent = languages[language].successMessage;
+    document.querySelector('#errorMessage').textContent = languages[language].errorMessage;
+    document.querySelector('#errorMessage_login').textContent = languages[language].errorMessage_login;
+
+    document.querySelector('#submit').textContent = languages[language].submit;
+
+    document.querySelector('#toggleDebug').textContent = languages[language].toggleDebug;
+
+    document.querySelector('#redirectButton').textContent = languages[language].redirectButton;
+    document.querySelector('#errorMessage_redirect').textContent = languages[language].errorMessage_redirect;
+}
+
+// Event listener for language flag clicks
+document.querySelectorAll('.language-flag').forEach(flag => {
+    flag.addEventListener('click', function() {
+        const language = this.getAttribute('data-language');
+        setLanguage(language);
+        localStorage.language = language;
+        console.log(localStorage.language);
+    });
+});
+
+// Initial language setting
+document.addEventListener('DOMContentLoaded', function() {
+    // Set default language to English
+    const defaultLanguage = localStorage.language || 'en';
+    setLanguage(defaultLanguage);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const accountNameInput = document.getElementById('accountName');
     const uidInput = document.getElementById('uid');
@@ -16,16 +203,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const discordSignInButton = document.getElementById('discordSignIn');
     const discordNameInput = document.getElementById('discordName');
 
+    const loadingMessage = document.getElementById('loadingMessage');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const errorMessage_login = document.getElementById('errorMessage_login');
+
+    const toggleDebugButton = document.getElementById('toggleDebug');
     const debugDisplay = document.getElementById('debug');
 
     const redirectButton = document.getElementById('redirectButton');
+    const errorMessage_redirect = document.getElementById('errorMessage_redirect');
     const targetURL = "https://www.hoyolab.com/";
 
     let ltuid_v2 = null;
     let ltoken_v2 = null;
 
+    let isDebugMode = false;
+
     const DISCORD_CLIENT_ID = '1267008645074260009'; // Replace with your Discord Client ID
     const DISCORD_REDIRECT_URI = `https://${chrome.runtime.id}.chromiumapp.org/`; // Correct OAuth2 redirect URI
+
+    // Function to show a notification message
+    function showMessage(messageElement) {
+        loadingMessage.style.display = 'none';
+        successMessage.style.display = 'none';
+        errorMessage.style.display = 'none';
+        errorMessage_login.style.diplay = 'none';
+        errorMessage_redirect.style.diplay = 'none';
+        
+        messageElement.style.display = 'block';
+    }
+
+    // Toggle Developer Mode
+    toggleDebugButton.addEventListener('click', () => {
+        isDebugMode = !isDebugMode;  // Toggle debug mode
+        debugDisplay.style.display = isDebugMode ? 'block' : 'none'; // Show/hide debug console
+        toggleDebugButton.textContent = isDebugMode ? languages[localStorage.language].untoggleDebug : languages[localStorage.language].toggleDebug; // Update button text
+    });
 
     // Hide all fields and debug display
     function hideFields() {
@@ -36,10 +250,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Show only message and redirect button
     function showRedirectMessage() {
         hideFields();  // Hide the form fields
-        const message = document.createElement('p');  // Create message element
-        message.textContent = `You are not on ${targetURL}. Please visit the correct site.`;
-        document.body.appendChild(message);  // Add the message to the body
-        redirectButton.style.display = 'block';  // Show the redirect button
+        redirectButton.style.display = 'block';
+        showMessage(errorMessage_redirect);
     }
 
     // Function to display debug messages
@@ -63,6 +275,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadUserData(ltuid_v2);  // Load user data with the tokens
             } else {
                 debugLog("Token and UID not detected. Please sign in to proceed.");
+
+                showMessage(errorMessage_login);
             }
         });
     }
@@ -95,7 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Enable notificationInput
             if (discordNameInput.value != '') {
                 notificationInput.disabled = false;
-                notificationText.textContent = 'Discord notification'
             }
 
 
@@ -149,6 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         debugLog('Submitting form data: ' + JSON.stringify(requestData));  // Debug form data
+        showMessage(loadingMessage);
 
         try {
             const response = await fetch(`https://script.google.com/macros/s/AKfycbwGBOE6WS6GWyDu2hfR4xQXHJTtlEFGxGTcK8RFV5CIUFnkJ1MK76EtCIcEkchr9392/exec`, {
@@ -160,8 +374,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             const result = await response.json();
             debugLog('Response from API: ' + JSON.stringify(result));  // Debug API response
+
+            // Show success message if submission was successful
+            if (result.status == "success") {
+                showMessage(successMessage);
+            }
+
         } catch (error) {
-            debugLog('Error submitting data: ' + error);  // Debug error
+            debugLog('Error submitting data: ' + error); // Debug error
+
+            showMessage(errorMessage); // Show error message
         }
     });
 
@@ -194,7 +416,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 discordNameInput.value = data.username;
 
                 notificationInput.disabled = false
-                notificationText.textContent = 'Discord notification'
 
                 debugLog('Discord user: ' + discordNameInput.value);
             })
