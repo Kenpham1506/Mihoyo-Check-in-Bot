@@ -15,8 +15,7 @@
     "cookies",
     "activeTab",
     "tabs",
-    "identity",
-    "storage"
+    "identity"
   ],
   "background": {
     "service_worker": "background.js"

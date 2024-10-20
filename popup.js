@@ -130,6 +130,39 @@ const languages = {
 
         redirectButton: "Đi tới Hoyolab",
         errorMessage_redirect: "Bạn không ở trang https://www.hoyolab.com/. Vui lòng truy cập đúng trang web.",
+    },
+    ko:{
+        appName: "미호요 체크인 봇",
+    
+        accountName: "계정 이름:",
+        uid: "UID:",
+    
+        genshin: "원신",
+        honkaiStarRail: "붕괴: 스타레일",
+        honkai3: "붕괴3rd",
+        tearsOfThemis: "테오 티미스",
+        zenlessZoneZero: "젠레스 존 제로",
+    
+        giftcode: "새로운 공개 기프트코드 자동 클레임",
+    
+        discordName: "디스코드 이름:",
+        discordNotifications: "디스코드 알림",
+        notificationText: "(알림을 활성화하려면 디스코드로 로그인하세요)",
+        signInWithDiscord: "디스코드로 로그인",
+        discordInvite: "로그 및 알림을 받으려면 디스코드 채널에 참여하세요",
+    
+        loadingMessage: "로딩 중...",
+        successMessage: "제출 성공!",
+        errorMessage: "제출 실패. 다시 시도하거나 디스코드에서 지원 팀에 문의하세요.",
+        errorMessage_login: "계속하려면 로그인하세요",
+    
+        submit: "제출",
+    
+        toggleDebug: "개발자 모드 활성화",
+        untoggleDebug: "개발자 모드 비활성화",
+    
+        redirectButton: "Hoyolab으로 이동",
+        errorMessage_redirect: "https://www.hoyolab.com/ 에 있지 않습니다. 올바른 사이트를 방문하세요."
     }
 };
 
