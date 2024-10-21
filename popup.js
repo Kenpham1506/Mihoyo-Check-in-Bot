@@ -419,7 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Real Discord OAuth2 Sign-In
+    // Discord OAuth2 Sign-In
     discordSignInButton.addEventListener('click', function () {
         const authURL = `https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(DISCORD_REDIRECT_URI)}&response_type=token&scope=identify`;
 
