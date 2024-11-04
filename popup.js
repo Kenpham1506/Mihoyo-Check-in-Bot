@@ -13,6 +13,8 @@ const languages = {
 
         giftcode: "Auto claim new public giftcode",
 
+        server_select: "Select Server",
+
         discordName: "Discord Name:",
         discordNotifications: "Discord Notifications",
         notificationText: "(Sign-In with Discord to enable notification)",
@@ -23,6 +25,7 @@ const languages = {
         successMessage: "Submission Successful!",
         errorMessage: "Submission Failed. Try again or contact support on discord.",
         errorMessage_login: "Please login to continue",
+        errorMessage_version: "Please update the extension to continue: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg",
 
         submit: "Submit",
 
@@ -46,6 +49,8 @@ const languages = {
 
         giftcode: "新しい公共ギフトコードを自動的に請求",
 
+        server_select: "サーバー選択",
+
         discordName: "ディスコード名:",
         discordNotifications: "ディスコード通知",
         notificationText: "(通知を有効にするには Discord でサインインしてください)",
@@ -56,6 +61,7 @@ const languages = {
         successMessage: "送信に成功しました!",
         errorMessage: "送信に失敗しました。もう一度試すか、Discord のサポートにお問い合わせください。",
         errorMessage_login: "続行するにはログインしてください",
+        errorMessage_version: "拡張機能を更新して続行してください: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg",
 
         submit: "送信",
 
@@ -79,6 +85,8 @@ const languages = {
 
         giftcode: "自動領取最新的公開禮品碼",
 
+        server_select: "選擇伺服器",
+
         discordName: "Discord 名稱:",
         discordNotifications: "Discord 通知",
         notificationText: "（使用 Discord 登入以啟用通知）",
@@ -89,6 +97,7 @@ const languages = {
         successMessage: "提交成功！",
         errorMessage: "提交失敗。請重試或聯絡支援人員以解決不和諧問題。",
         errorMessage_login: "請登入以繼續",
+        errorMessage_version: "請更新擴充功能以繼續使用：https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg",
 
         submit: "提交",
 
@@ -112,6 +121,8 @@ const languages = {
 
         giftcode: "Tự động nhận Giftcode công khai",
 
+        server_select: "Chọn Máy Chủ",
+
         discordName: "Tên Discord:",
         discordNotifications: "Thông báo Discord",
         notificationText: "(Đăng nhập bằng Discord để bật thông báo)",
@@ -122,6 +133,7 @@ const languages = {
         successMessage: "Gửi thành công!",
         errorMessage: "Gửi không thành công. Hãy thử lại hoặc liên hệ với bộ phận hỗ trợ trên discord.",
         errorMessage_login: "Vui lòng đăng nhập để tiếp tục",
+        errorMessage_version: "Vui lòng cập nhật tiện ích mở rộng để tiếp tục: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg",
 
         submit: "Gửi",
 
@@ -144,6 +156,8 @@ const languages = {
         zenlessZoneZero: "젠레스 존 제로",
     
         giftcode: "새로운 공개 기프트코드 자동 클레임",
+
+        server_select: "서버 선택",
     
         discordName: "디스코드 이름:",
         discordNotifications: "디스코드 알림",
@@ -155,6 +169,7 @@ const languages = {
         successMessage: "제출 성공!",
         errorMessage: "제출 실패. 다시 시도하거나 디스코드에서 지원 팀에 문의하세요.",
         errorMessage_login: "계속하려면 로그인하세요",
+        errorMessage_version: "계속하려면 확장 프로그램을 업데이트해 주세요: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg",
     
         submit: "제출",
     
@@ -168,7 +183,7 @@ const languages = {
 
 // Function to set the language
 function setLanguage(language) {
-    document.querySelector('h3').textContent = languages[language].appName;
+    document.querySelector('#title').textContent = languages[language].appName;
 
     document.querySelector('label[for="accountName"]').textContent = languages[language].accountName;
     document.querySelector('label[for="uid"]').textContent = languages[language].uid;
@@ -181,6 +196,8 @@ function setLanguage(language) {
 
     document.querySelector('label[for="giftcode"]').textContent = languages[language].giftcode;
 
+    document.querySelector('#server_select_title').textContent = languages[language].server_select;
+
     document.querySelector('label[for="discordName"]').textContent = languages[language].discordName;
     document.querySelector('label[for="notification"]').textContent = languages[language].discordNotifications;
     document.querySelector('#notificationText').textContent = languages[language].notificationText;
@@ -191,6 +208,7 @@ function setLanguage(language) {
     document.querySelector('#successMessage').textContent = languages[language].successMessage;
     document.querySelector('#errorMessage').textContent = languages[language].errorMessage;
     document.querySelector('#errorMessage_login').textContent = languages[language].errorMessage_login;
+    document.querySelector('#errorMessage_version').textContent = languages[language].errorMessage_version;
 
     document.querySelector('#submit').textContent = languages[language].submit;
 
@@ -221,24 +239,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const accountNameInput = document.getElementById('accountName');
     const uidInput = document.getElementById('uid');
 
-    const genshinInput = document.getElementById('genshin');
-    const honkaiStarRailInput = document.getElementById('honkai_star_rail');
-    const honkai3Input = document.getElementById('honkai_3');
-    const tearsOfThemisInput = document.getElementById('tears_of_themis');
-    const zenlessZoneZeroInput = document.getElementById('zenless_zone_zero');
+    const genshinInput = document.getElementById('game_genshin');
+    const honkaiStarRailInput = document.getElementById('game_honkai_star_rail');
+    const honkai3Input = document.getElementById('game_honkai_3');
+    const tearsOfThemisInput = document.getElementById('game_tears_of_themis');
+    const zenlessZoneZeroInput = document.getElementById('game_zenless_zone_zero');
 
-    const giftcodeInput = document.getElementById('giftcode');
+    const giftcodeInput = document.getElementById('feature_giftcode');
 
-    const notificationInput = document.getElementById('notification');
+    const server_America = document.getElementById('server_America');
+    const server_Asia = document.getElementById('server_Asia');
+    const server_TW_HK_CN = document.getElementById('server_TW_HK_CN');
+    const server_Europe = document.getElementById('server_Europe');
+
+    const notificationInput = document.getElementById('feature_notification');
     const notificationText = document.getElementById('notificationText');
     const submitButton = document.getElementById('submit');
     const discordSignInButton = document.getElementById('discordSignIn');
-    const discordNameInput = document.getElementById('discordName');
+    const discordNameInput = document.getElementById('discordName');    
+    const discordInvite = document.getElementById('discordInvite');
 
     const loadingMessage = document.getElementById('loadingMessage');
     const successMessage = document.getElementById('successMessage');
     const errorMessage = document.getElementById('errorMessage');
     const errorMessage_login = document.getElementById('errorMessage_login');
+    const errorMessage_version = document.getElementById('errorMessage_version');
 
     const toggleDebugButton = document.getElementById('toggleDebug');
     const debugDisplay = document.getElementById('debug');
@@ -260,8 +285,9 @@ document.addEventListener('DOMContentLoaded', () => {
         loadingMessage.style.display = 'none';
         successMessage.style.display = 'none';
         errorMessage.style.display = 'none';
-        errorMessage_login.style.diplay = 'none';
-        errorMessage_redirect.style.diplay = 'none';
+        errorMessage_login.style.display = 'none';
+        errorMessage_redirect.style.display = 'none';
+        errorMessage_version.style.display = 'none';
         
         messageElement.style.display = 'block';
     }
@@ -313,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Function to load user data using the tokens from cookies
+    // Function to load user data
     async function loadUserData(ltuid_v2) {
         try {
             debugLog("Fetching user data from the API...");  // Debug message
@@ -321,6 +347,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             debugLog("User data received from the API");  // Debug message
             debugLog(JSON.stringify(data));  // Debug response data
+
+            const manifest = chrome.runtime.getManifest();
+            const current_version = manifest.version;
+
+            if (current_version != data.latest_version) {
+                debugLog("Version mismatch. Please update the extension.");
+
+                showMessage(errorMessage_version);
+            }
 
             // Populate the fields with user data
             accountNameInput.value = data.accountName || ltuid_v2;  // Default to UID if no account name
@@ -333,10 +368,19 @@ document.addEventListener('DOMContentLoaded', () => {
             zenlessZoneZeroInput.checked = data.zenless_zone_zero;
 
             giftcodeInput.checked = data.giftcode;
+            
+            const server = data.server;
+            server_America.checked = (["os_usa"].every(subServer => server.includes(subServer)));
+            server_Asia.checked = (["os_asia"].every(subServer => server.includes(subServer)));
+            server_TW_HK_CN.checked = (["os_cht"].every(subServer => server.includes(subServer)));
+            server_Europe.checked = (["os_euro"].every(subServer => server.includes(subServer)));
+
 
             notificationInput.checked = data.notification;
             discordUserID = data.discordName;
-            discordNameInput.value = data.accountName
+            discordNameInput.value = data.accountName;
+
+
 
             // Enable notificationInput
             if (discordNameInput.value != '') {
@@ -363,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Submit the form data
     submitButton.addEventListener('click', async function () {
         const manifest = chrome.runtime.getManifest();
-        const version = manifest.version;
+        const current_version = manifest.version;
 
         const genshin = genshinInput.checked;
         const honkaiStarRail = honkaiStarRailInput.checked;
@@ -373,13 +417,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const giftcode = giftcodeInput.checked;
 
+        let server = "";
+        if (server_America.checked) {server += "os_usa "}
+        if (server_Asia.checked) {server += "os_asia "}
+        if (server_TW_HK_CN.checked) {server += "os_cht "}
+        if (server_Europe.checked) {server += "os_euro "}
+
         const notification = notificationInput.checked;
         const accountName = accountNameInput.value;
         const discordName = discordUserID;
 
 
         const requestData = {
-            version,
+            current_version,
             token: ltoken_v2,
             uid: ltuid_v2,
             genshin,
@@ -388,6 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tears_of_themis: tearsOfThemis,
             zenless_zone_zero: zenlessZoneZero,
             giftcode,
+            server,
             notification,
             accountName,
             discordName,
@@ -456,6 +507,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+discordInvite.addEventListener("click", function(event) {
+    event.preventDefault(); // Prevents the default behavior immediately
+    window.open("https://discord.gg/W8GF6XYzTC", "_blank"); // Opens the link in a new tab
+    
+    // Delay the default navigation to make sure it does not trigger
+    setTimeout(() => { window.location.href = window.location.href; }, 1);
+  });
 
     // Redirect button functionality
     redirectButton.addEventListener('click', () => {

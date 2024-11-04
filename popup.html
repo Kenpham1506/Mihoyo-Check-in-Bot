@@ -150,7 +150,7 @@
 </head>
 <body>
 
-  <h3>Mihoyo Check-in Bot</h3>
+  <h3 id="title">Mihoyo Check-in Bot</h3>
 
   <!-- Language Selection -->
   <div id="language-selection" style="text-align: center; margin-bottom: 15px;">
@@ -172,22 +172,39 @@
 
     <!-- Game Options -->
     <label for="genshin">Genshin Impact</label>
-    <input type="checkbox" id="genshin"> Genshin Impact
+    <input type="checkbox" id="game_genshin"> Genshin Impact
 
     <label for="honkai_star_rail">Honkai Star Rail</label>
-    <input type="checkbox" id="honkai_star_rail"> Honkai Star Rail
+    <input type="checkbox" id="game_honkai_star_rail"> Honkai Star Rail
 
     <label for="honkai_3">Honkai 3</label>
-    <input type="checkbox" id="honkai_3"> Honkai 3
+    <input type="checkbox" id="game_honkai_3"> Honkai 3
 
     <label for="tears_of_themis">Tears of Themis</label>
-    <input type="checkbox" id="tears_of_themis"> Tears of Themis
+    <input type="checkbox" id="game_tears_of_themis"> Tears of Themis
 
     <label for="zenless_zone_zero">Zenless Zone Zero</label>
-    <input type="checkbox" id="zenless_zone_zero"> Zenless Zone Zero
+    <input type="checkbox" id="game_zenless_zone_zero"> Zenless Zone Zero
 
     <label for="giftcode">Auto claim new public giftcode</label>
-    <input type="checkbox" id="giftcode"> Beta
+    <input type="checkbox" id="feature_giftcode"> Beta
+
+    <!-- Server Selection -->
+    <div id="Server-selection" style="text-align: left; margin-left: 10px; margin-bottom: 15px;">
+      <h3 id="server_select_title">Select Server</h3>
+      <label for="America">America</label>
+      <img src="images\server\USA.png" alt="America" class="language-flag" style="width: 40px; margin: 0 5px;">
+      <input type="checkbox" id="server_America"> os_usa
+      <label for="Asia">Asia</label>
+      <img src="images\server\ASIA.png" alt="ASIA" class="language-flag" style="width: 40px; margin: 0 5px;">
+      <input type="checkbox" id="server_Asia"> os_asia
+      <label for="TW_HK_CN">TW,HK,MO</label>
+      <img src="images\server\TW HK MO.png" alt="TW HK MO" class="language-flag" style="width: 40px; margin: 0 5px;">
+      <input type="checkbox" id="server_TW_HK_CN"> os_cht
+      <label for="Europe">Europe</label>
+      <img src="images\server\EURO.png" alt="EURO" class="language-flag" style="width: 40px; margin: 0 5px;">
+      <input type="checkbox" id="server_Europe"> os_euro
+    </div>
 
     <hr>
 
@@ -197,14 +214,14 @@
 
     <!-- Notifications Option -->
     <label for="notification">Discord Notifications</label>
-    <input type="checkbox" id="notification" disabled>
+    <input type="checkbox" id="feature_notification" disabled>
     <span id="notificationText">(Sign-In with Discord to enable notification)</span>
 
     <!-- Discord Sign-In Button -->
     <button id="discordSignIn">Sign in with Discord</button>
 
     <!-- Discord Channel Link -->
-    <a href="https://discord.gg/W8GF6XYzTC" class="discord-link" target="_blank" id="discordInvite">Join Discord Channel for Logs & Notifications</a>    
+    <a href="https://discord.gg/W8GF6XYzTC" class="discord-link" id="discordInvite">Join Discord Channel for Logs and Notifications</a>   
     
     <hr>
 
@@ -213,6 +230,7 @@
     <div id="successMessage" class="notification success" style="display: none;">Submission Successful!</div>
     <div id="errorMessage" class="notification error" style="display: none;">Submission Failed. Please try again.</div>
     <div id="errorMessage_login" class="notification error" style="display: none;">Please login to continue</div>
+    <div id="errorMessage_version" class="notification error" style="display: none;">Please update to continue, https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg</div>
 
     <!-- Submit Button -->
     <button id="submit">Submit</button>
