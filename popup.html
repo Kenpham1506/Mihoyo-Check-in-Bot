@@ -239,6 +239,13 @@
 
     <!-- Toggle Developer Mode Button -->
     <button id="toggleDebug">Show Developer Mode</button>
+
+    <div>
+      <span>Current version: </span> <span id="current_version">0.0.0.0</span>
+    </div>
+    <div>
+      <span>Latest version: </span> <span id="latest_version">0.0.0.0</span>
+    </div>
   </div>
 
   <!-- Debug message display -->
@@ -248,6 +255,6 @@
   <div id="errorMessage_redirect" class="notification error" style="display: none;">You are not on https://www.hoyolab.com/. Please visit the correct site.</div>
   <button id="redirectButton">Go to Hoyolab</button>
 
-  <script src="popup.js"></script>
+  <script type="module" src="popup.js"></script>
 </body>
 </html>

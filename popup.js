@@ -24,8 +24,8 @@ const languages = {
         loadingMessage: "Loading...",
         successMessage: "Submission Successful!",
         errorMessage: "Submission Failed. Try again or contact support on discord.",
-        errorMessage_login: "Please login to continue",
-        errorMessage_version: "Please update the extension to continue: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg",
+        errorMessage_login: "Please log in to HoYoLAB to continue.",
+        errorMessage_version: "Please update the extension to continue: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
 
         submit: "Submit",
 
@@ -60,7 +60,7 @@ const languages = {
         loadingMessage: "読み込み中...",
         successMessage: "送信に成功しました!",
         errorMessage: "送信に失敗しました。もう一度試すか、Discord のサポートにお問い合わせください。",
-        errorMessage_login: "続行するにはログインしてください",
+        errorMessage_login: "続行するにはHoYoLABにログインしてください。",
         errorMessage_version: "拡張機能を更新して続行してください: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg",
 
         submit: "送信",
@@ -96,8 +96,8 @@ const languages = {
         loadingMessage: "載入中...",
         successMessage: "提交成功！",
         errorMessage: "提交失敗。請重試或聯絡支援人員以解決不和諧問題。",
-        errorMessage_login: "請登入以繼續",
-        errorMessage_version: "請更新擴充功能以繼續使用：https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg",
+        errorMessage_login: "請登入HoYoLAB以繼續。",
+        errorMessage_version: "請更新擴充功能以繼續使用：https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg。",
 
         submit: "提交",
 
@@ -132,8 +132,8 @@ const languages = {
         loadingMessage: "Đang tải...",
         successMessage: "Gửi thành công!",
         errorMessage: "Gửi không thành công. Hãy thử lại hoặc liên hệ với bộ phận hỗ trợ trên discord.",
-        errorMessage_login: "Vui lòng đăng nhập để tiếp tục",
-        errorMessage_version: "Vui lòng cập nhật tiện ích mở rộng để tiếp tục: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg",
+        errorMessage_login: "Vui lòng đăng nhập vào HoYoLAB để tiếp tục.",
+        errorMessage_version: "Vui lòng cập nhật tiện ích mở rộng để tiếp tục: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
 
         submit: "Gửi",
 
@@ -168,8 +168,8 @@ const languages = {
         loadingMessage: "로딩 중...",
         successMessage: "제출 성공!",
         errorMessage: "제출 실패. 다시 시도하거나 디스코드에서 지원 팀에 문의하세요.",
-        errorMessage_login: "계속하려면 로그인하세요",
-        errorMessage_version: "계속하려면 확장 프로그램을 업데이트해 주세요: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg",
+        errorMessage_login: "계속하려면 HoYoLAB에 로그인하세요.",
+        errorMessage_version: "계속하려면 확장 프로그램을 업데이트해 주세요: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
     
         submit: "제출",
     
@@ -265,6 +265,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessage_login = document.getElementById('errorMessage_login');
     const errorMessage_version = document.getElementById('errorMessage_version');
 
+    const current_version = document.getElementById('current_version');
+    const latest_version = document.getElementById('latest_version');
+
     const toggleDebugButton = document.getElementById('toggleDebug');
     const debugDisplay = document.getElementById('debug');
 
@@ -349,15 +352,11 @@ document.addEventListener('DOMContentLoaded', () => {
             debugLog(JSON.stringify(data));  // Debug response data
 
             const manifest = chrome.runtime.getManifest();
-            const current_version = manifest.version;
-
-            if (current_version != data.latest_version) {
-                debugLog("Version mismatch. Please update the extension.");
-
-                showMessage(errorMessage_version);
-            }
+            current_version.textContent = manifest.version;
 
             // Populate the fields with user data
+            latest_version.textContent = data.latest_version;
+
             accountNameInput.value = data.accountName || ltuid_v2;  // Default to UID if no account name
             uidInput.value = ltuid_v2;
 
@@ -380,7 +379,11 @@ document.addEventListener('DOMContentLoaded', () => {
             discordUserID = data.discordName;
             discordNameInput.value = data.accountName;
 
+            if (current_version.textContent != latest_version.textContent) {
+                debugLog("Version mismatch. Please update the extension.");
 
+                showMessage(errorMessage_version);
+            }
 
             // Enable notificationInput
             if (discordNameInput.value != '') {
@@ -406,9 +409,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Submit the form data
     submitButton.addEventListener('click', async function () {
-        const manifest = chrome.runtime.getManifest();
-        const current_version = manifest.version;
-
         const genshin = genshinInput.checked;
         const honkaiStarRail = honkaiStarRailInput.checked;
         const honkai3 = honkai3Input.checked;
@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         const requestData = {
-            current_version,
+            current_version: current_version.textContent,
             token: ltoken_v2,
             uid: ltuid_v2,
             genshin,
@@ -445,28 +445,34 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         debugLog('Submitting form data: ' + JSON.stringify(requestData));  // Debug form data
-        showMessage(loadingMessage);
 
-        try {
-            const response = await fetch(`https://script.google.com/macros/s/AKfycbwGBOE6WS6GWyDu2hfR4xQXHJTtlEFGxGTcK8RFV5CIUFnkJ1MK76EtCIcEkchr9392/exec`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestData)
-            });
-            const result = await response.json();
-            debugLog('Response from API: ' + JSON.stringify(result));  // Debug API response
+        if (ltuid_v2 = "") {
+            showMessage(errorMessage_login);
+        } else if (current_version.textContent != latest_version.textContent) {
+            showMessage(errorMessage_version);
+        } else {
+            try {
+                showMessage(loadingMessage);
+                const response = await fetch(`https://script.google.com/macros/s/AKfycbwGBOE6WS6GWyDu2hfR4xQXHJTtlEFGxGTcK8RFV5CIUFnkJ1MK76EtCIcEkchr9392/exec`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                const result = await response.json();
+                debugLog('Response from API: ' + JSON.stringify(result));  // Debug API response
 
-            // Show success message if submission was successful
-            if (result.status == "success") {
-                showMessage(successMessage);
+                // Show success message if submission was successful
+                if (result.status == "success") {
+                    showMessage(successMessage);
+                }
+
+            } catch (error) {
+                debugLog('Error submitting data: ' + error); // Debug error
+
+                showMessage(errorMessage); // Show error message
             }
-
-        } catch (error) {
-            debugLog('Error submitting data: ' + error); // Debug error
-
-            showMessage(errorMessage); // Show error message
         }
     });
 
