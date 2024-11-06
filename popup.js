@@ -376,10 +376,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             notificationInput.checked = data.notification;
-            discordUserID = data.discordName;
+            const discordUserID = data.discordName;
             discordNameInput.value = data.accountName;
 
-            if (current_version.textContent != latest_version.textContent) {
+            if (compareVersions(current_version.textContent, latest_version.textContent)) {
                 debugLog("Version mismatch. Please update the extension.");
 
                 showMessage(errorMessage_version);
@@ -448,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (ltuid_v2 = "") {
             showMessage(errorMessage_login);
-        } else if (current_version.textContent != latest_version.textContent) {
+        } else if (compareVersions(current_version.textContent, latest_version.textContent)) {
             showMessage(errorMessage_version);
         } else {
             try {
@@ -529,3 +529,26 @@ discordInvite.addEventListener("click", function(event) {
         });
     });
 });
+
+function compareVersions(version1, version2) {
+    // Split the version strings by the dot (.)
+    const v1Parts = version1.split('.').map(num => parseInt(num, 10));
+    const v2Parts = version2.split('.').map(num => parseInt(num, 10));
+
+    // Compare each part of the version
+    const length = Math.max(v1Parts.length, v2Parts.length);
+    
+    for (let i = 0; i < length; i++) {
+        // Get the current part, defaulting to 0 if the version is shorter
+        const v1Part = v1Parts[i] || 0;
+        const v2Part = v2Parts[i] || 0;
+
+        if (v1Part < v2Part) {
+            return true;  // version1 is smaller
+        } else if (v1Part > v2Part) {
+            return false; // version1 is greater
+        }
+    }
+    
+    return false;  // versions are equal
+}
