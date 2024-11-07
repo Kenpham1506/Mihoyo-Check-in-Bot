@@ -34,6 +34,8 @@ const languages = {
 
         redirectButton: "Go to Hoyolab",
         errorMessage_redirect: "You are not on https://www.hoyolab.com/. Please visit the correct site.",
+
+        version_text: "version",
     },
     jp: {
         appName: "ミホヨ チェックイン ボット",
@@ -70,6 +72,8 @@ const languages = {
 
         redirectButton: "ホヨラボに行く",
         errorMessage_redirect: "https://www.hoyolab.com/ にアクセスしていません。正しいサイトにアクセスしてください。",
+
+        version_text: "バージョン",
     },
     tw: {
         appName: "米哈遊簽到機器人",
@@ -106,6 +110,8 @@ const languages = {
 
         redirectButton: "前往 Hoyolab",
         errorMessage_redirect: "您不在 https://www.hoyolab.com/ 上。請造訪正確的網站。",
+
+        version_text: "版本",
     },
     vi: {
         appName: "Bot Check-in Mihoyo",
@@ -142,6 +148,8 @@ const languages = {
 
         redirectButton: "Đi tới Hoyolab",
         errorMessage_redirect: "Bạn không ở trang https://www.hoyolab.com/. Vui lòng truy cập đúng trang web.",
+
+        version_text: "Phiên bản",
     },
     ko:{
         appName: "미호요 체크인 봇",
@@ -177,7 +185,47 @@ const languages = {
         untoggleDebug: "개발자 모드 비활성화",
     
         redirectButton: "Hoyolab으로 이동",
-        errorMessage_redirect: "https://www.hoyolab.com/ 에 있지 않습니다. 올바른 사이트를 방문하세요."
+        errorMessage_redirect: "https://www.hoyolab.com/ 에 있지 않습니다. 올바른 사이트를 방문하세요.",
+
+        version_text: "버전",
+    },
+    ru: {
+        appName: "Бот для регистрации Mihoyo",
+    
+        accountName: "Имя аккаунта:",
+        uid: "UID:",
+    
+        genshin: "Genshin Impact",
+        honkaiStarRail: "Honkai Star Rail",
+        honkai3: "Honkai 3",
+        tearsOfThemis: "Tears of Themis",
+        zenlessZoneZero: "Zenless Zone Zero",
+    
+        giftcode: "Автоматическое получение новых публичных подарочных кодов",
+    
+        server_select: "Выберите сервер",
+    
+        discordName: "Имя Discord:",
+        discordNotifications: "Уведомления Discord",
+        notificationText: "(Войдите через Discord, чтобы включить уведомления)",
+        signInWithDiscord: "Войти через Discord",
+        discordInvite: "Присоединяйтесь к каналу Discord для журналов и уведомлений",
+    
+        loadingMessage: "Загрузка...",
+        successMessage: "Отправка успешна!",
+        errorMessage: "Отправка не удалась. Попробуйте еще раз или свяжитесь со службой поддержки в Discord.",
+        errorMessage_login: "Пожалуйста, войдите в HoYoLAB, чтобы продолжить.",
+        errorMessage_version: "Пожалуйста, обновите расширение для продолжения: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
+    
+        submit: "Отправить",
+    
+        toggleDebug: "Включить режим разработчика",
+        untoggleDebug: "Отключить режим разработчика",
+    
+        redirectButton: "Перейти на Hoyolab",
+        errorMessage_redirect: "Вы не находитесь на https://www.hoyolab.com/. Пожалуйста, посетите правильный сайт.",
+
+        version_text: "Версия",
     }
 };
 
@@ -216,6 +264,8 @@ function setLanguage(language) {
 
     document.querySelector('#redirectButton').textContent = languages[language].redirectButton;
     document.querySelector('#errorMessage_redirect').textContent = languages[language].errorMessage_redirect;
+
+    document.querySelector('#version_text').textContent = languages[language].version_text;
 }
 
 // Event listener for language flag clicks
