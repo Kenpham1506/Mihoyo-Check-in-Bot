@@ -266,7 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessage_version = document.getElementById('errorMessage_version');
 
     const current_version = document.getElementById('current_version');
-    const latest_version = document.getElementById('latest_version');
 
     const toggleDebugButton = document.getElementById('toggleDebug');
     const debugDisplay = document.getElementById('debug');
@@ -275,8 +274,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessage_redirect = document.getElementById('errorMessage_redirect');
     const targetURL = "https://www.hoyolab.com/";
 
+    let latest_version = null;
+
     let ltuid_v2 = null;
     let ltoken_v2 = null;
+
+    let discordUserID = null;
 
     let isDebugMode = false;
 
@@ -335,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 debugLog(`ltuid_v2: ${ltuid_v2}, ltoken_v2: ${ltoken_v2}`);  // Debug tokens
                 loadUserData(ltuid_v2);  // Load user data with the tokens
             } else {
-                debugLog("Token and UID not detected. Please sign in to proceed.");
+                debugLog("Token and UID not detected. Please sign in to Hoyolab proceed.");
 
                 showMessage(errorMessage_login);
             }
@@ -355,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
             current_version.textContent = manifest.version;
 
             // Populate the fields with user data
-            latest_version.textContent = data.latest_version;
+            latest_version = data.latest_version;
 
             accountNameInput.value = data.accountName || ltuid_v2;  // Default to UID if no account name
             uidInput.value = ltuid_v2;
@@ -376,10 +379,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             notificationInput.checked = data.notification;
-            const discordUserID = data.discordName;
+            discordUserID = data.discordName;
             discordNameInput.value = data.accountName;
 
-            if (compareVersions(current_version.textContent, latest_version.textContent)) {
+            if (compareVersions(current_version.textContent, latest_version)) {
                 debugLog("Version mismatch. Please update the extension.");
 
                 showMessage(errorMessage_version);
@@ -447,8 +450,12 @@ document.addEventListener('DOMContentLoaded', () => {
         debugLog('Submitting form data: ' + JSON.stringify(requestData));  // Debug form data
 
         if (ltuid_v2 = "") {
+            debugLog("Token and UID not detected. Please sign in to Hoyolab proceed.");
+
             showMessage(errorMessage_login);
-        } else if (compareVersions(current_version.textContent, latest_version.textContent)) {
+        } else if (compareVersions(current_version.textContent, latest_version)) {
+            debugLog("Version mismatch. Please update the extension.");
+
             showMessage(errorMessage_version);
         } else {
             try {
