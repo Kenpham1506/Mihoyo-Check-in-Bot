@@ -1,3 +1,5 @@
+let isSelectingLanguage = false;
+
 const languages = {};
 
 async function loadLanguages() {
@@ -16,6 +18,7 @@ async function loadLanguages() {
 
 // Function to set the language
 async function setLanguage(language) {
+    document.querySelector('#language_selected_flag').src = "images/flags/"+ language +".png";
     document.querySelector('#title').textContent = languages[language].appName;
 
     document.querySelector('label[for="accountName"]').textContent = languages[language].accountName;
@@ -31,6 +34,7 @@ async function setLanguage(language) {
 
     document.querySelector('#server_select_title').textContent = languages[language].server_select;
 
+    document.querySelector('#Notification_title').textContent = languages[language].notificationTitle;
     document.querySelector('label[for="discordName"]').textContent = languages[language].discordName;
     document.querySelector('label[for="notification"]').textContent = languages[language].discordNotifications;
     document.querySelector('#notificationText').textContent = languages[language].notificationText;
@@ -60,6 +64,10 @@ document.querySelectorAll('.language-flag').forEach(flag => {
         setLanguage(language);
         localStorage.language = language;
         console.log(localStorage.language);
+
+        //const language_selection = document.getElementById('language_selection');
+        isSelectingLanguage = !isSelectingLanguage;
+        language_selection.style.display = 'none';
     });
 });
 
@@ -75,6 +83,9 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    const toggleLanguageSelection = document.getElementById('language_selected_flag')
+    const language_selection = document.getElementById('language_selection');
+
     const accountNameInput = document.getElementById('accountName');
     const uidInput = document.getElementById('uid');
 
@@ -120,6 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let discordUserID = null;
 
+    
+
     let isDebugMode = false;
 
     const DISCORD_CLIENT_ID = '1267008645074260009'; // Replace with your Discord Client ID
@@ -136,6 +149,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         messageElement.style.display = 'block';
     }
+
+    // Toggle Language Selection
+    toggleLanguageSelection.addEventListener('click', () => {
+    isSelectingLanguage = !isSelectingLanguage;  // Toggle debug mode
+    language_selection.style.display = isSelectingLanguage ? 'block' : 'none'; // Show/hide debug console
+    });
 
     // Toggle Developer Mode
     toggleDebugButton.addEventListener('click', () => {

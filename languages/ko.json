@@ -14,6 +14,7 @@
 
     "server_select": "서버 선택",
 
+    "notificationTitle": "알림",
     "discordName": "디스코드 이름:",
     "discordNotifications": "디스코드 알림",
     "notificationText": "(알림을 활성화하려면 디스코드로 로그인하세요)",

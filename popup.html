@@ -17,13 +17,17 @@
   <h3 id="title">Mihoyo Check-in Bot</h3>
 
   <!-- Language Selection -->
-  <div id="language-selection" style="text-align: center; margin-bottom: 15px;">
-    <img src="images/flags/English.png" alt="English" class="language-flag" data-language="en" style="cursor: pointer; width: 40px; margin: 0 5px;">
-    <img src="images/flags/Japan.png" alt="Japanese" class="language-flag" data-language="jp" style="cursor: pointer; width: 40px; margin: 0 5px;">
-    <img src="images/flags/Taiwan.png" alt="Taiwanese" class="language-flag" data-language="tw" style="cursor: pointer; width: 40px; margin: 0 5px;">
-    <img src="images/flags/Vietnam.png" alt="Vietnamese" class="language-flag" data-language="vi" style="cursor: pointer; width: 40px; margin: 0 5px;">
-    <img src="images/flags/Korea.png" alt="Korean" class="language-flag" data-language="ko" style="cursor: pointer; width: 40px; margin: 0 5px;">
-    <img src="images/flags/Russia.png" alt="Russia" class="language-flag" data-language="ru" style="cursor: pointer; width: 40px; margin: 0 5px;">
+  <div id="language_selected" style="text-align: right; margin-bottom: 15px;">
+    <img id="language_selected_flag" src="images/flags/en.png" style="cursor: pointer; width: 40px; margin: 0 5px; border: 1px solid black;">
+  </div>
+
+  <div id="language_selection" style="text-align: center; margin-bottom: 15px; display: none;">
+    <img src="images/flags/en.png" alt="English" class="language-flag" data-language="en" style="cursor: pointer; width: 40px; margin: 0 5px; border: 1px solid black;">
+    <img src="images/flags/jp.png" alt="Japanese" class="language-flag" data-language="jp" style="cursor: pointer; width: 40px; margin: 0 5px; border: 1px solid black;">
+    <img src="images/flags/tw.png" alt="Taiwanese" class="language-flag" data-language="tw" style="cursor: pointer; width: 40px; margin: 0 5px; border: 1px solid black;">
+    <img src="images/flags/vi.png" alt="Vietnamese" class="language-flag" data-language="vi" style="cursor: pointer; width: 40px; margin: 0 5px; border: 1px solid black;">
+    <img src="images/flags/ko.png" alt="Korean" class="language-flag" data-language="ko" style="cursor: pointer; width: 40px; margin: 0 5px; border: 1px solid black;">
+    <img src="images/flags/ru.png" alt="Russia" class="language-flag" data-language="ru" style="cursor: pointer; width: 40px; margin: 0 5px; border: 1px solid black;">
   </div>
 
   <div id="userSpace">
@@ -58,20 +62,20 @@
     <div id="Server-selection" style="text-align: left; margin-left: 10px; margin-bottom: 15px;">
       <h3 id="server_select_title">Select Server</h3>
       <label for="America">America</label>
-      <img src="images\server\USA.png" alt="America" class="language-flag" style="width: 40px; margin: 0 5px;">
+      <img src="images\server\USA.png" alt="America" class="language-flag" style="width: 40px; margin: 0 5px; border: 1px solid black;">
       <input type="checkbox" id="server_America"> os_usa
       <label for="Asia">Asia</label>
-      <img src="images\server\ASIA.png" alt="ASIA" class="language-flag" style="width: 40px; margin: 0 5px;">
+      <img src="images\server\ASIA.png" alt="ASIA" class="language-flag" style="width: 40px; margin: 0 5px; border: 1px solid black;">
       <input type="checkbox" id="server_Asia"> os_asia
       <label for="TW_HK_CN">TW,HK,MO</label>
-      <img src="images\server\TW HK MO.png" alt="TW HK MO" class="language-flag" style="width: 40px; margin: 0 5px;">
+      <img src="images\server\TW HK MO.png" alt="TW HK MO" class="language-flag" style="width: 40px; margin: 0 5px; border: 1px solid black;">
       <input type="checkbox" id="server_TW_HK_CN"> os_cht
       <label for="Europe">Europe</label>
-      <img src="images\server\EURO.png" alt="EURO" class="language-flag" style="width: 40px; margin: 0 5px;">
+      <img src="images\server\EURO.png" alt="EURO" class="language-flag" style="width: 40px; margin: 0 5px; border: 1px solid black;">
       <input type="checkbox" id="server_Europe"> os_euro
     </div>
 
-    <hr>
+    <h3 id="Notification_title">Notification</h3>
 
     <!-- Discord name -->
     <label for="discordName">Discord Name:</label>

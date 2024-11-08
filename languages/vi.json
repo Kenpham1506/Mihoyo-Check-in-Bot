@@ -14,6 +14,7 @@
 
     "server_select": "Chọn Máy Chủ",
 
+    "notificationTitle": "Thông báo",
     "discordName": "Tên Discord:",
     "discordNotifications": "Thông báo Discord",
     "notificationText": "(Đăng nhập bằng Discord để bật thông báo)",

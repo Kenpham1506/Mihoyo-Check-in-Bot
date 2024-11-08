@@ -14,6 +14,7 @@
     
     "server_select": "Select Server",
     
+    "notificationTitle": "Notifications",
     "discordName": "Discord Name:",
     "discordNotifications": "Discord Notifications",
     "notificationText": "(Sign-In with Discord to enable notification)",
