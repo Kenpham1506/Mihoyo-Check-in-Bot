@@ -1,0 +1,38 @@
+{
+    "appName": "Mihoyo Check-in Bot",
+
+    "accountName": "Имя аккаунта:",
+    "uid": "UID:",
+
+    "genshin": "Genshin Impact",
+    "honkaiStarRail": "Honkai Star Rail",
+    "honkai3": "Honkai 3",
+    "tearsOfThemis": "Tears of Themis",
+    "zenlessZoneZero": "Zenless Zone Zero",
+
+    "giftcode": "Автоматически получать новые публичные подарочные коды",
+
+    "server_select": "Выберите сервер",
+
+    "discordName": "Имя в Discord:",
+    "discordNotifications": "Уведомления в Discord",
+    "notificationText": "(Войдите через Discord, чтобы включить уведомления)",
+    "signInWithDiscord": "Войти через Discord",
+    "discordInvite": "Присоединяйтесь к каналу Discord для журналов и уведомлений",
+
+    "loadingMessage": "Загрузка...",
+    "successMessage": "Отправка успешна!",
+    "errorMessage": "Ошибка отправки. Попробуйте снова или свяжитесь с поддержкой в Discord.",
+    "errorMessage_login": "Пожалуйста, войдите в HoYoLAB для продолжения.",
+    "errorMessage_version": "Пожалуйста, обновите расширение для продолжения: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
+
+    "submit": "Отправить",
+
+    "toggleDebug": "Включить режим разработчика",
+    "untoggleDebug": "Отключить режим разработчика",
+
+    "redirectButton": "Перейти в Hoyolab",
+    "errorMessage_redirect": "Вы не находитесь на https://www.hoyolab.com/. Пожалуйста, посетите правильный сайт.",
+
+    "version_text": "версия"
+}

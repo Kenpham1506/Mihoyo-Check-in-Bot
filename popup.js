@@ -1,236 +1,21 @@
-const languages = {
-    en: {
-        appName: "Mihoyo Check-in Bot",
+const languages = {};
 
-        accountName: "Account Name:",
-        uid: "UID:",
+async function loadLanguages() {
+    try {
+        const langFiles = ['en', 'jp', 'tw', 'vi', 'ko', 'ru'];  // List of language files
+        for (let lang of langFiles) {
+            const response = await fetch(`languages/${lang}.json`);
+            const data = await response.json();
+            languages[lang] = data;  // Dynamically adding properties to the `languages` object
+        }
 
-        genshin: "Genshin Impact",
-        honkaiStarRail: "Honkai Star Rail",
-        honkai3: "Honkai 3",
-        tearsOfThemis: "Tears of Themis",
-        zenlessZoneZero: "Zenless Zone Zero",
-
-        giftcode: "Auto claim new public giftcode",
-
-        server_select: "Select Server",
-
-        discordName: "Discord Name:",
-        discordNotifications: "Discord Notifications",
-        notificationText: "(Sign-In with Discord to enable notification)",
-        signInWithDiscord: "Sign in with Discord",
-        discordInvite: "Join Discord Channel for Logs and Notifications",
-
-        loadingMessage: "Loading...",
-        successMessage: "Submission Successful!",
-        errorMessage: "Submission Failed. Try again or contact support on discord.",
-        errorMessage_login: "Please log in to HoYoLAB to continue.",
-        errorMessage_version: "Please update the extension to continue: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
-
-        submit: "Submit",
-
-        toggleDebug: "Enable developer mode",
-        untoggleDebug: "Disable developer mode",
-
-        redirectButton: "Go to Hoyolab",
-        errorMessage_redirect: "You are not on https://www.hoyolab.com/. Please visit the correct site.",
-
-        version_text: "version",
-    },
-    jp: {
-        appName: "ミホヨ チェックイン ボット",
-
-        accountName: "アカウント名:",
-        uid: "UID:",
-
-        genshin: "原神",
-        honkaiStarRail: "崩壊：星穹鉄道",
-        honkai3: "崩壊3rd",
-        tearsOfThemis: "テイアーズ・オブ・テミス",
-        zenlessZoneZero: "ゼンレスゾーンゼロ",
-
-        giftcode: "新しい公共ギフトコードを自動的に請求",
-
-        server_select: "サーバー選択",
-
-        discordName: "ディスコード名:",
-        discordNotifications: "ディスコード通知",
-        notificationText: "(通知を有効にするには Discord でサインインしてください)",
-        signInWithDiscord: "Discordでサインイン",
-        discordInvite: "Discord チャンネルに参加してログと通知を取得する",
-
-        loadingMessage: "読み込み中...",
-        successMessage: "送信に成功しました!",
-        errorMessage: "送信に失敗しました。もう一度試すか、Discord のサポートにお問い合わせください。",
-        errorMessage_login: "続行するにはHoYoLABにログインしてください。",
-        errorMessage_version: "拡張機能を更新して続行してください: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg",
-
-        submit: "送信",
-
-        toggleDebug: "開発者モードを有効にする",
-        untoggleDebug: "開発者モードを無効にする",
-
-        redirectButton: "ホヨラボに行く",
-        errorMessage_redirect: "https://www.hoyolab.com/ にアクセスしていません。正しいサイトにアクセスしてください。",
-
-        version_text: "バージョン",
-    },
-    tw: {
-        appName: "米哈遊簽到機器人",
-
-        accountName: "帳號名稱:",
-        uid: "UID:",
-
-        genshin: "原神",
-        honkaiStarRail: "崩壞：星穹鐵道",
-        honkai3: "崩壞3rd",
-        tearsOfThemis: "命運之眼",
-        zenlessZoneZero: "無盡之地",
-
-        giftcode: "自動領取最新的公開禮品碼",
-
-        server_select: "選擇伺服器",
-
-        discordName: "Discord 名稱:",
-        discordNotifications: "Discord 通知",
-        notificationText: "（使用 Discord 登入以啟用通知）",
-        signInWithDiscord: "使用 Discord 登入",
-        discordInvite: "有關日誌和通知，請參加 Discord 頻道",
-
-        loadingMessage: "載入中...",
-        successMessage: "提交成功！",
-        errorMessage: "提交失敗。請重試或聯絡支援人員以解決不和諧問題。",
-        errorMessage_login: "請登入HoYoLAB以繼續。",
-        errorMessage_version: "請更新擴充功能以繼續使用：https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg。",
-
-        submit: "提交",
-
-        toggleDebug: "啟用開發者模式",
-        untoggleDebug: "禁用開發者模式",
-
-        redirectButton: "前往 Hoyolab",
-        errorMessage_redirect: "您不在 https://www.hoyolab.com/ 上。請造訪正確的網站。",
-
-        version_text: "版本",
-    },
-    vi: {
-        appName: "Bot Check-in Mihoyo",
-
-        accountName: "Tên tài khoản:",
-        uid: "UID:",
-
-        genshin: "Genshin Impact",
-        honkaiStarRail: "Honkai Star Rail",
-        honkai3: "Honkai 3",
-        tearsOfThemis: "Tears of Themis",
-        zenlessZoneZero: "Zenless Zone Zero",
-
-        giftcode: "Tự động nhận Giftcode công khai",
-
-        server_select: "Chọn Máy Chủ",
-
-        discordName: "Tên Discord:",
-        discordNotifications: "Thông báo Discord",
-        notificationText: "(Đăng nhập bằng Discord để bật thông báo)",
-        signInWithDiscord: "Đăng nhập với Discord",
-        discordInvite: "Tham gia kênh Discord để nhận nhật ký và thông báo",
-
-        loadingMessage: "Đang tải...",
-        successMessage: "Gửi thành công!",
-        errorMessage: "Gửi không thành công. Hãy thử lại hoặc liên hệ với bộ phận hỗ trợ trên discord.",
-        errorMessage_login: "Vui lòng đăng nhập vào HoYoLAB để tiếp tục.",
-        errorMessage_version: "Vui lòng cập nhật tiện ích mở rộng để tiếp tục: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
-
-        submit: "Gửi",
-
-        toggleDebug: "Bật chế độ nhà phát triển",
-        untoggleDebug: "Tắt chế độ nhà phát triển",
-
-        redirectButton: "Đi tới Hoyolab",
-        errorMessage_redirect: "Bạn không ở trang https://www.hoyolab.com/. Vui lòng truy cập đúng trang web.",
-
-        version_text: "Phiên bản",
-    },
-    ko:{
-        appName: "미호요 체크인 봇",
-    
-        accountName: "계정 이름:",
-        uid: "UID:",
-    
-        genshin: "원신",
-        honkaiStarRail: "붕괴: 스타레일",
-        honkai3: "붕괴3rd",
-        tearsOfThemis: "테오 티미스",
-        zenlessZoneZero: "젠레스 존 제로",
-    
-        giftcode: "새로운 공개 기프트코드 자동 클레임",
-
-        server_select: "서버 선택",
-    
-        discordName: "디스코드 이름:",
-        discordNotifications: "디스코드 알림",
-        notificationText: "(알림을 활성화하려면 디스코드로 로그인하세요)",
-        signInWithDiscord: "디스코드로 로그인",
-        discordInvite: "로그 및 알림을 받으려면 디스코드 채널에 참여하세요",
-    
-        loadingMessage: "로딩 중...",
-        successMessage: "제출 성공!",
-        errorMessage: "제출 실패. 다시 시도하거나 디스코드에서 지원 팀에 문의하세요.",
-        errorMessage_login: "계속하려면 HoYoLAB에 로그인하세요.",
-        errorMessage_version: "계속하려면 확장 프로그램을 업데이트해 주세요: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
-    
-        submit: "제출",
-    
-        toggleDebug: "개발자 모드 활성화",
-        untoggleDebug: "개발자 모드 비활성화",
-    
-        redirectButton: "Hoyolab으로 이동",
-        errorMessage_redirect: "https://www.hoyolab.com/ 에 있지 않습니다. 올바른 사이트를 방문하세요.",
-
-        version_text: "버전",
-    },
-    ru: {
-        appName: "Бот для регистрации Mihoyo",
-    
-        accountName: "Имя аккаунта:",
-        uid: "UID:",
-    
-        genshin: "Genshin Impact",
-        honkaiStarRail: "Honkai Star Rail",
-        honkai3: "Honkai 3",
-        tearsOfThemis: "Tears of Themis",
-        zenlessZoneZero: "Zenless Zone Zero",
-    
-        giftcode: "Автоматическое получение новых публичных подарочных кодов",
-    
-        server_select: "Выберите сервер",
-    
-        discordName: "Имя Discord:",
-        discordNotifications: "Уведомления Discord",
-        notificationText: "(Войдите через Discord, чтобы включить уведомления)",
-        signInWithDiscord: "Войти через Discord",
-        discordInvite: "Присоединяйтесь к каналу Discord для журналов и уведомлений",
-    
-        loadingMessage: "Загрузка...",
-        successMessage: "Отправка успешна!",
-        errorMessage: "Отправка не удалась. Попробуйте еще раз или свяжитесь со службой поддержки в Discord.",
-        errorMessage_login: "Пожалуйста, войдите в HoYoLAB, чтобы продолжить.",
-        errorMessage_version: "Пожалуйста, обновите расширение для продолжения: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
-    
-        submit: "Отправить",
-    
-        toggleDebug: "Включить режим разработчика",
-        untoggleDebug: "Отключить режим разработчика",
-    
-        redirectButton: "Перейти на Hoyolab",
-        errorMessage_redirect: "Вы не находитесь на https://www.hoyolab.com/. Пожалуйста, посетите правильный сайт.",
-
-        version_text: "Версия",
+    } catch (error) {
+        debugLog("Error loading language files:", error);
     }
-};
+}
 
 // Function to set the language
-function setLanguage(language) {
+async function setLanguage(language) {
     document.querySelector('#title').textContent = languages[language].appName;
 
     document.querySelector('label[for="accountName"]').textContent = languages[language].accountName;
@@ -279,7 +64,11 @@ document.querySelectorAll('.language-flag').forEach(flag => {
 });
 
 // Initial language setting
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+
+    //loadlanguages
+    await loadLanguages();
+
     // Set default language to English
     const defaultLanguage = localStorage.language || 'en';
     setLanguage(defaultLanguage);

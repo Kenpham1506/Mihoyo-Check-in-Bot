@@ -1,0 +1,38 @@
+{
+    "appName": "Mihoyo Check-in Bot",
+
+    "accountName": "Account Name:",
+    "uid": "UID:",
+    
+    "genshin": "Genshin Impact",
+    "honkaiStarRail": "Honkai Star Rail",
+    "honkai3": "Honkai 3",
+    "tearsOfThemis": "Tears of Themis",
+    "zenlessZoneZero": "Zenless Zone Zero",
+    
+    "giftcode": "Auto claim new public giftcode",
+    
+    "server_select": "Select Server",
+    
+    "discordName": "Discord Name:",
+    "discordNotifications": "Discord Notifications",
+    "notificationText": "(Sign-In with Discord to enable notification)",
+    "signInWithDiscord": "Sign in with Discord",
+    "discordInvite": "Join Discord Channel for Logs and Notifications",
+    
+    "loadingMessage": "Loading...",
+    "successMessage": "Submission Successful!",
+    "errorMessage": "Submission Failed. Try again or contact support on discord.",
+    "errorMessage_login": "Please log in to HoYoLAB to continue.",
+    "errorMessage_version": "Please update the extension to continue: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
+    
+    "submit": "Submit",
+    
+    "toggleDebug": "Enable developer mode",
+    "untoggleDebug": "Disable developer mode",
+    
+    "redirectButton": "Go to Hoyolab",
+    "errorMessage_redirect": "You are not on https://www.hoyolab.com/. Please visit the correct site.",
+    
+    "version_text": "version"
+}
