@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Enable notificationInput
-            if (discordUserID.value != '') {
+            if (discordUserID != '') {
                 notificationInput.disabled = false;
             }
 
