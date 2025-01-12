@@ -46,6 +46,7 @@ async function setLanguage(language) {
     document.querySelector('#errorMessage').textContent = languages[language].errorMessage;
     document.querySelector('#errorMessage_login').textContent = languages[language].errorMessage_login;
     document.querySelector('#errorMessage_version').textContent = languages[language].errorMessage_version;
+    document.querySelector('#errorMessage_server').textContent = languages[language].errorMessage_server;
 
     document.querySelector('#submit').textContent = languages[language].submit;
 
