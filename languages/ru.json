@@ -26,6 +26,7 @@
     "errorMessage": "Ошибка отправки. Попробуйте снова или свяжитесь с поддержкой в Discord.",
     "errorMessage_login": "Пожалуйста, войдите в HoYoLAB для продолжения.",
     "errorMessage_version": "Пожалуйста, обновите расширение для продолжения: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
+    "errorMessage_server": "Пожалуйста, выберите один или несколько серверов",
 
     "submit": "Отправить",
 

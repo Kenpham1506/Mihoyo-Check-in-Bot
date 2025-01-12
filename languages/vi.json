@@ -26,6 +26,7 @@
     "errorMessage": "Gửi không thành công. Hãy thử lại hoặc liên hệ với bộ phận hỗ trợ trên discord.",
     "errorMessage_login": "Vui lòng đăng nhập vào HoYoLAB để tiếp tục.",
     "errorMessage_version": "Vui lòng cập nhật tiện ích mở rộng để tiếp tục: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
+    "errorMessage_server": "Vui lòng chọn một hoặc nhiều máy chủ",
 
     "submit": "Gửi",
 

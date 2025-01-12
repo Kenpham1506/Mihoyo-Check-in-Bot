@@ -26,7 +26,8 @@
     "errorMessage": "Submission Failed. Try again or contact support on discord.",
     "errorMessage_login": "Please log in to HoYoLAB to continue.",
     "errorMessage_version": "Please update the extension to continue: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
-    
+    "errorMessage_server": "Please select one or multiple servers",
+
     "submit": "Submit",
     
     "toggleDebug": "Enable developer mode",

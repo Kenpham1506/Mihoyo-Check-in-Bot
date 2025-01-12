@@ -26,6 +26,7 @@
     "errorMessage": "제출 실패. 다시 시도하거나 디스코드에서 지원 팀에 문의하세요.",
     "errorMessage_login": "계속하려면 HoYoLAB에 로그인하세요.",
     "errorMessage_version": "계속하려면 확장 프로그램을 업데이트해 주세요: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg.",
+    "errorMessage_server": "하나 이상의 서버를 선택해 주세요",
 
     "submit": "제출",
 

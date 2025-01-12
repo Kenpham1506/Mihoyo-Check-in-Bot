@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessage = document.getElementById('errorMessage');
     const errorMessage_login = document.getElementById('errorMessage_login');
     const errorMessage_version = document.getElementById('errorMessage_version');
+    const errorMessage_server = document.getElementById('errorMessage_server');
 
     const current_version = document.getElementById('current_version');
 
@@ -146,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMessage_login.style.display = 'none';
         errorMessage_redirect.style.display = 'none';
         errorMessage_version.style.display = 'none';
+        errorMessage_server.style.display = 'none';
         
         messageElement.style.display = 'block';
     }
@@ -270,6 +272,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Submit the form data
     submitButton.addEventListener('click', async function () {
+
+        submitButton.disabled = true;
+
         const genshin = genshinInput.checked;
         const honkaiStarRail = honkaiStarRailInput.checked;
         const honkai3 = honkai3Input.checked;
@@ -307,14 +312,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         debugLog('Submitting form data: ' + JSON.stringify(requestData));  // Debug form data
 
-        if (ltuid_v2 = "") {
+        if (ltuid_v2 == "") {
             debugLog("Token and UID not detected. Please sign in to Hoyolab proceed.");
 
             showMessage(errorMessage_login);
+            submitButton.disabled = false;
         } else if (compareVersions(current_version.textContent, latest_version)) {
             debugLog("Version mismatch. Please update the extension.");
 
             showMessage(errorMessage_version);
+            submitButton.disabled = false;
+        } else if (server == "") {
+            debugLog("Server empty. Please select a server.");
+
+            showMessage(errorMessage_server);
+            submitButton.disabled = false;
         } else {
             try {
                 showMessage(loadingMessage);
@@ -331,12 +343,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Show success message if submission was successful
                 if (result.status == "success") {
                     showMessage(successMessage);
+                    submitButton.disabled = false;
                 }
 
             } catch (error) {
                 debugLog('Error submitting data: ' + error); // Debug error
 
                 showMessage(errorMessage); // Show error message
+                submitButton.disabled = false;
             }
         }
     });

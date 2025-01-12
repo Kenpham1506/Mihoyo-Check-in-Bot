@@ -26,6 +26,7 @@
     "errorMessage": "送信に失敗しました。もう一度試すか、Discord のサポートにお問い合わせください。",
     "errorMessage_login": "続行するにはHoYoLABにログインしてください。",
     "errorMessage_version": "拡張機能を更新して続行してください: https://chromewebstore.google.com/detail/mihoyo-check-in-bot/mnnmhmmlombkjacdckobhfcmjomfiaeg",
+    "errorMessage_server": "1つ以上のサーバーを選択してください",
 
     "submit": "送信",
 
