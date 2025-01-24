@@ -4,7 +4,7 @@ const languages = {};
 
 async function loadLanguages() {
     try {
-        const langFiles = ['en', 'jp', 'tw', 'vi', 'ko', 'ru'];  // List of language files
+        const langFiles = ['cn', 'de', 'eg', 'es', 'fr', 'id', 'in', 'it', 'ja', 'ko', 'my', 'pl', 'pt', 'ru', 'th', 'tr', 'tw', 'us', 'vi'];  // List of language files
         for (let lang of langFiles) {
             const response = await fetch(`languages/${lang}.json`);
             const data = await response.json();
@@ -56,6 +56,9 @@ async function setLanguage(language) {
     document.querySelector('#errorMessage_redirect').textContent = languages[language].errorMessage_redirect;
 
     document.querySelector('#version_text').textContent = languages[language].version_text;
+
+    document.querySelector('#need_help_footer').textContent = languages[language].need_help_footer;
+    document.querySelector('#contact_support_footer').textContent = languages[language].contact_support_footer;
 }
 
 // Event listener for language flag clicks

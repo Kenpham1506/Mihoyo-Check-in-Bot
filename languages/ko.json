@@ -36,5 +36,8 @@
     "redirectButton": "Hoyolab로 이동",
     "errorMessage_redirect": "https://www.hoyolab.com/에 있지 않습니다. 올바른 사이트를 방문하세요.",
 
-    "version_text": "버전"
+    "version_text": "버전",
+
+    "need_help_footer": "문제가 있나요?",
+    "contact_support_footer": "연락해주세요"
 }

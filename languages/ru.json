@@ -36,5 +36,8 @@
     "redirectButton": "Перейти в Hoyolab",
     "errorMessage_redirect": "Вы не находитесь на https://www.hoyolab.com/. Пожалуйста, посетите правильный сайт.",
 
-    "version_text": "версия"
+    "version_text": "версия",
+
+    "need_help_footer": "Проблемы?",
+    "contact_support_footer": "Напишите нам"
 }

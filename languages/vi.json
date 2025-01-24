@@ -36,5 +36,8 @@
     "redirectButton": "Đi tới Hoyolab",
     "errorMessage_redirect": "Bạn không ở trang https://www.hoyolab.com/. Vui lòng truy cập đúng trang web.",
 
-    "version_text": "Phiên bản"
+    "version_text": "Phiên bản",
+
+    "need_help_footer": "Cần giúp đỡ?",
+    "contact_support_footer": "Liên hệ nhé"
 }

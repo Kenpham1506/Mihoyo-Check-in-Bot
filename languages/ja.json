@@ -36,5 +36,8 @@
     "redirectButton": "ホヨラボに行く",
     "errorMessage_redirect": "https://www.hoyolab.com/ にアクセスしていません。正しいサイトにアクセスしてください。",
 
-    "version_text": "バージョン"
+    "version_text": "バージョン",
+
+    "need_help_footer": "お困りですか？",
+    "contact_support_footer": "ご連絡ください"
 }

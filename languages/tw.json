@@ -36,5 +36,8 @@
     "redirectButton": "前往 Hoyolab",
     "errorMessage_redirect": "您不在 https://www.hoyolab.com/ 上。請造訪正確的網站。",
 
-    "version_text": "版本"
+    "version_text": "版本",
+
+    "need_help_footer": "需要幫忙嗎？",
+    "contact_support_footer": "來找我們"
 }

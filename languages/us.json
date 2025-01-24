@@ -36,5 +36,8 @@
     "redirectButton": "Go to Hoyolab",
     "errorMessage_redirect": "You are not on https://www.hoyolab.com/. Please visit the correct site.",
     
-    "version_text": "version"
+    "version_text": "version",
+
+    "need_help_footer": "Need help?",
+    "contact_support_footer": "Contact us"
 }
