@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Mihoyo Check-in Bot",
-  "version": "1.2.12.1",
+  "version": "1.2.12.2",
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -33,6 +33,5 @@
   ],
   "externally_connectable": {
     "matches": ["https://*.discord.com/*"]
-  },
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyG05Cs7VnAmLMhpPXfv40f1/OBlBVa0QdN11/WsteXZbijwn/HS8MkSgVLx9f0L5jSDtx3w0cWN7dsR3Zmwnyj/gt4pi9cBAPPh5iq85khgFcd+cI1k2KjPcfEGm2FyKxTVcmsHfNfl36Ib/GL2LTC8fMEeAKeYoxQvWVG5D3R0XZXuDQwi57gl3D8OYScxG+V1nqTULh//fb26snwOiVKc1WconcGphZ9aHp+n+tcvrhiwxz8WqZ8xPTqRoOwWNI7r9DJCGWXCRiWEpADcICFzXrE6ngnJ0NRAVskA/di06GC7L5KMxTAewiHj5RCOT3n1BCIQzPFnD0PZaWxXEWQIDAQAB"
+  }
 }
